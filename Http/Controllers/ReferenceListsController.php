@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Larapage\System\Http\Controllers\BaseController;
+use Module;
 
 class ReferenceListsController extends BaseController
 {

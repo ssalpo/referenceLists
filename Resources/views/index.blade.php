@@ -2,6 +2,6 @@
 
 @section('referenceListsContent')
 
-    <h3>Welcome tho the index page</h3>
+    <h3>Statistics put here</h3>
 
 @endsection

@@ -1,5 +1,7 @@
 <?php namespace Larapage\Modules\ReferenceLists\Providers;
 
+use Larapage\Modules\ReferenceLists\Models\Department;
+use Larapage\Modules\ReferenceLists\Repositories\Departments\CacheDecorator;
 use Larapage\System\Providers\BaseModuleServiceProvider;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
@@ -41,7 +43,24 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
         | Register route service provider
         |--------------------------------------------------------------------------
         */
-         $this->app->register('Larapage\Modules\ReferenceLists\Providers\RouteServiceProvider');
+        $this->app->register('Larapage\Modules\ReferenceLists\Providers\RouteServiceProvider');
+
+
+        /*
+        |--------------------------------------------------------------------------
+        | Bind repository interfaces
+        |--------------------------------------------------------------------------
+        */
+
+        // Department repo
+        $this->app->bind('Larapage\Modules\ReferenceLists\Repositories\Departments\DepartmentInterface', function () {
+            $eloquentModel = 'Larapage\ReferenceLists\Repositories\Lists\Department\EloquentDepartment';
+            $repository = new $eloquentModel(new Department);
+
+            if(!config('larapage.cache')) return $repository;
+
+            return new CacheDecorator($repository, $this->app['cache']);
+        });
 
     }
 

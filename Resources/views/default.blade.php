@@ -11,12 +11,14 @@
                         <span class="hidden-xs">{{ trans('referenceLists::global.indexPage') }}</span>
                     </a>
                 </li>
-                <li class="{{ setActive('referenceLists.settings.getSettings') }} tab">
-                    <a href="{{ route('referenceLists.settings.getSettings') }}">
-                        <span class="visible-xs">{{ trans('referenceLists::global.settingsPage') }}</span>
-                        <span class="hidden-xs">{{ trans('referenceLists::global.settingsPage') }}</span>
+
+                <li class="@if(Request::segment(4) == 'departments') active @endif tab">
+                    <a href="{{ route('referenceLists.departments.index') }}">
+                        <span class="visible-xs">{{ trans('referenceLists::departments.topMenuName') }}</span>
+                        <span class="hidden-xs">{{ trans('referenceLists::departments.topMenuName') }}</span>
                     </a>
                 </li>
+
             </ul>
             <div class="tab-content">
                 @yield('referenceListsContent')
@@ -25,4 +27,8 @@
         </div> <!-- end col -->
     </div>
 
+@endsection
+
+@section('footer_scripts')
+    <script type="text/javascript" src="{{ lp_module_assets('js/referenceLists.js', 'referenceLists') }}"></script>
 @endsection
