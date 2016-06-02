@@ -14,8 +14,15 @@
 
                 <li class="@if(Request::segment(4) == 'departments') active @endif tab">
                     <a href="{{ route('referenceLists.departments.index') }}">
-                        <span class="visible-xs">{{ trans('referenceLists::departments.topMenuName') }}</span>
-                        <span class="hidden-xs">{{ trans('referenceLists::departments.topMenuName') }}</span>
+                        <span class="visible-xs">{{ trans('referenceLists::departments.name') }}</span>
+                        <span class="hidden-xs">{{ trans('referenceLists::departments.name') }}</span>
+                    </a>
+                </li>
+
+                <li class="@if(Request::segment(4) == 'specializations') active @endif tab">
+                    <a href="{{ route('referenceLists.specializations.index') }}">
+                        <span class="visible-xs">{{ trans('referenceLists::specializations.name') }}</span>
+                        <span class="hidden-xs">{{ trans('referenceLists::specializations.name') }}</span>
                     </a>
                 </li>
 

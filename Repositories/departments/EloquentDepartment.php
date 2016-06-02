@@ -1,4 +1,4 @@
-<?php  namespace Larapage\ReferenceLists\Repositories\Lists\Department;
+<?php  namespace Larapage\ReferenceLists\Repositories\Departments;
 
 use Larapage\Modules\ReferenceLists\Repositories\Departments\DepartmentInterface;
 use Larapage\System\Repositories\Core\RepositoriesAbstract;

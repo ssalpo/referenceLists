@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'topMenuName' => 'Departments',
+    'name' => 'Departments',
     'page' => [
         'index' => 'Departments list'
     ],

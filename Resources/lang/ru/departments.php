@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'topMenuName' => 'Кафедры',
+    'name' => 'Кафедры',
     'page' => [
         'index' => 'Список кафедр'
     ],

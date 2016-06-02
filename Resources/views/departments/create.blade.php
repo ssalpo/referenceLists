@@ -14,25 +14,7 @@
             </div>
         </div>
 
-        <div class="form-group">
-            <div class="col-sm-offset-4 col-sm-4">
-                <button type="submit" class="btn btn-default btn-sm waves-effect waves-light">
-                    <span class="savingProgress"><i class="fa fa-spin fa-refresh"></i></span>
-                    <span class="settingsSaved"><i class="fa fa-check  "></i></span>
-                <span>
-                    {{ trans('system::global.saveBtn') }}
-                </span>
-                </button>
-
-                <a href="{{ route('referenceLists.departments.index') }}" class="btn btn-link">
-                    <span class="savingProgress"><i class="fa fa-spin fa-refresh"></i></span>
-                    <span class="settingsSaved"><i class="fa fa-check  "></i></span>
-                    <span>
-                        {{ trans('system::global.backBtn') }}
-                    </span>
-                </a>
-            </div>
-        </div>
+        @include('referenceLists::__partials.formBtn', ['form' => 'create', 'back' => 'departments'])
     </form>
 
 @endsection

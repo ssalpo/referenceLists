@@ -2,7 +2,7 @@
 
 @section('referenceListsContent')
     <div class="m-b-10 overflowHidden action-container">
-        <a href="{{ route('referenceLists.departments.create') }}" class="btn btn-default btn-sm waves-effect waves-light pull-left ">
+        <a href="{{ route('referenceLists.specializations.create') }}" class="btn btn-default btn-sm waves-effect waves-light pull-left ">
             <i class="fa fa-plus"></i>
             {{ trans('system::global.addBtn') }}
         </a>
@@ -13,21 +13,23 @@
         <table class="table table-hover mails m-0 table table-actions-bar ">
             <thead>
             <tr>
-                <th>{{ trans('referenceLists::departments.name') }}</th>
-                <th style="width: 130px"  class="text-center">{{ trans('referenceLists::departments.table.actions') }}</th>
+                <th>{{ trans('referenceLists::specializations.table.name') }}</th>
+                <th>{{ trans('referenceLists::specializations.form.department.label') }}</th>
+                <th style="width: 130px"  class="text-center">{{ trans('referenceLists::specializations.table.actions') }}</th>
             </tr>
             </thead>
 
             <tbody>
-                @foreach($departments as $department)
+                @foreach($specializations as $specialization)
                     <tr>
-                        <td> {{ $department->name }} </td>
+                        <td> {{ $specialization->name }} </td>
+                        <td> {{ $specialization->department->name }} </td>
 
                         <td >
                             <div class="text-center">
-                                <a href="{{ route('referenceLists.departments.edit', $department->id) }}" class="table-action-btn"><i class="md  md-edit" ></i></a>
+                                <a href="{{ route('referenceLists.specializations.edit', $specialization->id) }}" class="table-action-btn"><i class="md  md-edit" ></i></a>
 
-                                <form style="display: inline-block" class="form-inline deleteForm" action="{{ route('referenceLists.departments.destroy', $department->id) }}" method="post">
+                                <form style="display: inline-block" class="form-inline deleteForm" action="{{ route('referenceLists.specializations.destroy', $specialization->id) }}" method="post">
                                     {!! csrf_field() !!}
                                     {!! method_field('DELETE') !!}
                                     <span class="table-action-btn listDeleteBtn" ><i class="md md-close"></i></span>

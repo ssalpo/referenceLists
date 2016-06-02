@@ -1,7 +1,7 @@
 <?php namespace Larapage\Modules\ReferenceLists\Providers;
 
 use Larapage\Modules\ReferenceLists\Models\Department;
-use Larapage\Modules\ReferenceLists\Repositories\Departments\CacheDecorator;
+use Larapage\Modules\ReferenceLists\Models\Specialization;
 use Larapage\System\Providers\BaseModuleServiceProvider;
 
 class ModuleServiceProvider extends BaseModuleServiceProvider
@@ -54,12 +54,21 @@ class ModuleServiceProvider extends BaseModuleServiceProvider
 
         // Department repo
         $this->app->bind('Larapage\Modules\ReferenceLists\Repositories\Departments\DepartmentInterface', function () {
-            $eloquentModel = 'Larapage\ReferenceLists\Repositories\Lists\Department\EloquentDepartment';
+            $eloquentModel = 'Larapage\ReferenceLists\Repositories\Departments\EloquentDepartment';
             $repository = new $eloquentModel(new Department);
 
             if(!config('larapage.cache')) return $repository;
 
-            return new CacheDecorator($repository, $this->app['cache']);
+            return new \Larapage\Modules\ReferenceLists\Repositories\Departments\CacheDecorator($repository, $this->app['cache']);
+        });
+
+        // Specialization repo
+        $this->app->bind('Larapage\Modules\ReferenceLists\Repositories\Specializations\SpecializationInterface', function () {
+            $eloquentModel = 'Larapage\ReferenceLists\Repositories\Specializations\EloquentSpecialization';
+            $repository = new $eloquentModel(new Specialization);
+
+            if(!config('larapage.cache')) return $repository;
+            return new \Larapage\Modules\ReferenceLists\Repositories\Specializations\CacheDecorator($repository, $this->app['cache']);
         });
 
     }
